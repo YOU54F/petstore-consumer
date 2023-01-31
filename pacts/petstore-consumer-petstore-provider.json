@@ -1,0 +1,56 @@
+{
+  "consumer": {
+    "name": "petstore-consumer"
+  },
+  "interactions": [
+    {
+      "description": "A request for for pet with id 789",
+      "providerStates": [
+        {
+          "name": "A pet exists with id 789"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/pet/789"
+      },
+      "response": {
+        "body": {
+          "id": 789,
+          "name": "doggie"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "10.4.1"
+    },
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "petstore-provider"
+  }
+}
